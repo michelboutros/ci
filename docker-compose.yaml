@@ -20,7 +20,7 @@ services:
         environment:
             SONARQUBE_JDBC_USERNAME: sonar
             SONARQUBE_JDBC_PASSWORD: sonar
-            SONARQUBE_JDBC_URL: "jdbc:postgresql://sonar-db/sonar"
+            SONARQUBE_JDBC_URL: "jdbc:postgresql://sonar-postgres/sonar"
         volumes:
             - sonar_home:/opt/sonarqube/data
         networks:
