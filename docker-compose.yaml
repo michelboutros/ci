@@ -10,7 +10,7 @@ services:
         volumes:
             - jenkins_home:/var/jenkins_home
         networks:
-            ci: {}
+            network: {}
     
     sonarqube:
         image: sonarqube
@@ -20,15 +20,15 @@ services:
         environment:
             SONARQUBE_JDBC_USERNAME: sonar
             SONARQUBE_JDBC_PASSWORD: sonar
-            SONARQUBE_JDBC_URL: "jdbc:postgresql://sonar-postgres/sonar"
+            SONARQUBE_JDBC_URL: "jdbc:postgresql://postgres/sonar"
         volumes:
             - sonar_home:/opt/sonarqube/data
         networks:
-            ci: {}
+            network: {}
         depends_on:
-            - sonar-postgres
+            - postgres
     
-    sonar-postgres:
+    postgres:
         image: "postgres:10"
         environment:
             POSTGRES_DB: sonar
@@ -37,7 +37,7 @@ services:
         volumes:
             - sonar_db:/var/lib/postgresql/data
         networks:
-            ci: {}
+            network: {}
 
 volumes:
     jenkins_home:
@@ -45,5 +45,5 @@ volumes:
     sonar_db:
 
 networks:
-    ci:
+    network:
     
