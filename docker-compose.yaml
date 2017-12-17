@@ -26,7 +26,7 @@ services:
         networks:
             ci: {}
         depends_on:
-            - sonar-db
+            - sonar-postgres
     
     sonar-postgres:
         image: "postgres:10"
