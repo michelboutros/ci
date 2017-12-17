@@ -11,7 +11,6 @@ services:
             - jenkins_home:/var/jenkins_home
         networks:
             ci: {}
-        restart: no
     
     sonarqube:
         image: sonarqube
@@ -26,9 +25,8 @@ services:
             - sonar_home:/opt/sonarqube/data
         networks:
             ci: {}
-        depends-on:
+        depends_on:
             - sonar-db
-        restart: no
     
     sonar-postgres:
         image: "postgres:10"
@@ -40,7 +38,6 @@ services:
             - sonar_db:/var/lib/postgresql/data
         networks:
             ci: {}
-        restart: no
 
 volumes:
     jenkins_home:
