@@ -4,6 +4,8 @@ services:
     
     jenkins:
         image: jenkins/jenkins
+        environment:
+            JENKINS_OPTS: "--prefix=/jenkins"
         volumes:
             - jenkins_home:/var/jenkins_home
         networks:
