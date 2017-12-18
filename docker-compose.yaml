@@ -35,6 +35,15 @@ services:
             - sonar_db:/var/lib/postgresql/data
         networks:
             network: {}
+
+    nexus:
+        image: "sonatype/nexus3"
+        environment:
+            NEXUS_CONTEXT: nexus
+        volumes:
+            - nexus_data:/nexus-data
+        networks:
+            network: {}         
     
     nginx:
         image: nginx
@@ -47,11 +56,13 @@ services:
         depends_on:
             - jenkins
             - sonarqube
+            - nexus
 
 volumes:
     jenkins_home:
     sonar_home:
     sonar_db:
+    nexus_data:
 
 networks:
     network:
