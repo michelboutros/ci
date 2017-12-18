@@ -13,6 +13,7 @@ services:
     
     sonarqube:
         image: sonarqube
+        command: -Dsonar.web.context=/sonarqube
         environment:
             SONARQUBE_JDBC_USERNAME: sonar
             SONARQUBE_JDBC_PASSWORD: sonar
