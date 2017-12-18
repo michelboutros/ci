@@ -4,9 +4,6 @@ services:
     
     jenkins:
         image: jenkins/jenkins
-        ports:
-            - "8000:8080"
-            - "50000:50000"
         volumes:
             - jenkins_home:/var/jenkins_home
         networks:
@@ -14,9 +11,6 @@ services:
     
     sonarqube:
         image: sonarqube
-        ports:
-            - "9000:9000"
-            - "9092:9092"
         environment:
             SONARQUBE_JDBC_USERNAME: sonar
             SONARQUBE_JDBC_PASSWORD: sonar
@@ -36,6 +30,15 @@ services:
             POSTGRES_PASSWORD: sonar
         volumes:
             - sonar_db:/var/lib/postgresql/data
+        networks:
+            network: {}
+    
+    nginx:
+        image: nginx
+        ports:
+            - "80:80"
+        volumes:
+            - ./nginx.conf:/etc/nginx/nginx.conf:ro
         networks:
             network: {}
 
