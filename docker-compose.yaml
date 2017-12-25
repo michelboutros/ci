@@ -33,6 +33,7 @@ services:
             POSTGRES_DB: sonar
             POSTGRES_USER: sonar
             POSTGRES_PASSWORD: sonar
+            TZ: "Asia/Beirut"
         volumes:
             - sonar_db:/var/lib/postgresql/data
         networks:
@@ -42,6 +43,7 @@ services:
         image: "sonatype/nexus3"
         environment:
             NEXUS_CONTEXT: nexus
+            TZ: "Asia/Beirut"
         volumes:
             - nexus_data:/nexus-data
         networks:
@@ -51,6 +53,8 @@ services:
         image: nginx
         ports:
             - "80:80"
+        environment:
+            TZ: "Asia/Beirut"
         volumes:
             - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
         networks:
