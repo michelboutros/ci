@@ -6,7 +6,7 @@ services:
         image: jenkins/jenkins
         environment:
             JENKINS_OPTS: "--prefix=/jenkins"
-            JAVA_ARGS: "-Dorg.apache.commons.jelly.tags.fmt.timeZone=Asia/Beirut"
+            JENKINS_JAVA_OPTIONS: "-Dorg.apache.commons.jelly.tags.fmt.timeZone=Asia/Beirut"
         volumes:
             - jenkins_home:/var/jenkins_home
         networks:
