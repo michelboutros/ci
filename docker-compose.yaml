@@ -19,6 +19,7 @@ services:
             SONARQUBE_JDBC_USERNAME: sonar
             SONARQUBE_JDBC_PASSWORD: sonar
             SONARQUBE_JDBC_URL: "jdbc:postgresql://postgres/sonar"
+            TZ: "Asia/Beirut"
         volumes:
             - sonar_home:/opt/sonarqube/data
         networks:
